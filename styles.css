@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.container {
+    margin-top: 10px;
+    text-align: center;
+    width: 354px;
+    background-color: #222;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+input[type="number"] {
+    padding: 8px;
+    font-size: 20px;
+    width: 210px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.card {
+    color: white;
+    background-color: #222;
+    border-radius: 8px;
+    width: 350px;
+    border: 2px solid #387b0b;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding: 20px;
+    font-size: 20px;
+}
+
+.card:hover {
+    border: 2px solid #489e0f;
+}
+.img-card {
+    max-height: 350px;
+}
+.img-card:hover {
+    scale: 1.05;
+}
+
+button {
+    padding: 8px 16px;
+    font-size: 20px;
+    background-color: #387b0b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #489e0f;
+}
+
+#errorMsg {
+    color: red;
+    margin-top: 10px;
+}
