@@ -1,23 +1,26 @@
 document.getElementById("searchButton").addEventListener("click", () => {
     const pokemonNumber = document.getElementById("pokemonNumber").value;
+    //Ingreso de numero en imput
 
     if (!pokemonNumber) {
-        showError("Por favor, ingresa un número de Pokémon.");
+        displayErrorCard("Por favor, ingresa un número de Pokémon.");
         return;
-    }
+    } //Si no hay numero ingresado
 
     fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonNumber}`)
         .then((response) => {
             if (!response.ok) {
-                showError("Pokémon no encontrado.");
+                //Si devuelve false pasa al error
+                throw new Error("Pokémon no encontrado.");
             }
             return response.json();
         })
         .then((data) => {
             displayPokemon(data);
+            clearError();
         })
         .catch((error) => {
-            showError(error.message);
+            displayErrorCard(error.message);
         });
 });
 
@@ -26,7 +29,7 @@ function displayPokemon(pokemon) {
     if (!pokemon) {
         pokemonContainer.innerHTML = `
             <div class="card">
-                <p>Número de Pokémon incorrecto o no encontrado.</p>
+                <p>Número de Pokémon no encontrado.</p>
             </div>
         `;
         return;
@@ -56,4 +59,13 @@ function showError(message) {
 function clearError() {
     const errorMessage = document.getElementById("errorMsg");
     errorMessage.textContent = "";
+}
+
+function displayErrorCard(message) {
+    const pokemonContainer = document.getElementById("pokemonContainer");
+    pokemonContainer.innerHTML = `
+        <div class="card">
+            <p>${message}</p>
+        </div>
+    `;
 }
